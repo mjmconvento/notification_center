@@ -1,0 +1,13 @@
+.main-body {
+	margin-left: 10px;
+}
+
+input#title, 
+input#url {
+	width: 50%;
+}
+
+textarea#body {
+	width: 80%;
+}
+
