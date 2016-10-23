@@ -1,5 +1,25 @@
 {
-  	"name": "Push Notifications codelab",
-  	"gcm_sender_id": "318690479384",
-  	"gcm_user_visible_only": true
+    "short_name": "Test Notification",
+    "name": "Test Notification Devcon",
+    "gcm_sender_id": "318690479384",
+    "gcm_user_visible_only": true,
+    "icons": [
+        {
+            "src": "images/icon.png",
+            "sizes": "96x96",
+            "type": "image/png"
+        },
+        {
+            "src": "images/icon.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        },
+        {
+            "src": "images/icon.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ],
+    "display": "fullscreen",
+    "orientation": "landscape"
 }
