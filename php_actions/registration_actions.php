@@ -1,11 +1,6 @@
 <?php
-	$servername = "localhost";
-	$username = "root";
-	$password = "";
-	$dbname = "devcon_push_notification";
-	$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+	include 'connect.php';
 
-	
 	$subscription_id = $_POST['subscription_id'];
 
 	if ($_POST['action'] == 'subscribe') {
@@ -17,6 +12,8 @@
 	$conn->exec($sql);
 
 	$conn = null;
-	echo true;
+
+	header('Status: 200 OK');
+	echo 1;
 
 	

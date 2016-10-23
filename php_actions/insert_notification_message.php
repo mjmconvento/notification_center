@@ -1,9 +1,6 @@
 <?php
-	$servername = "localhost";
-	$username = "root";
-	$password = "";
-	$dbname = "devcon_push_notification";
-	$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+	
+	include 'connect.php';
 
 	$title = $_POST['title'];
 	$body = $_POST['body'];
@@ -25,13 +22,7 @@
 	    'registration_ids' => $result_array
 	);
 
-	// "https://updates.push.services.mozilla.com/wpush/v1/gAAAAABYDIqsyKQnKT4-j3xUex_XsCSu4C6_utHZROFNtwtilrHTdV0xIKUGqFdVjQpciuf_ajLPcR5dS6GE7YqusfYqPoK8k3g1xHIr9IIuwetWQ1Ho3xUqI_WoOi0bdcPP8emfSNuw"1main.js:110:9
-
-
-
 	$params = json_encode($values);
-
-	// curl_setopt($ch, CURLOPT_URL, "https://updates.push.services.mozilla.com/update/gAAAAABYDIqsyKQnKT4-j3xUex_XsCSu4C6_utHZROFNtwtilrHTdV0xIKUGqFdVjQpciuf_ajLPcR5dS6GE7YqusfYqPoK8k3g1xHIr9IIuwetWQ1Ho3xUqI_WoOi0bdcPP8emfSNuw");
 
 	curl_setopt($ch, CURLOPT_URL, "https://android.googleapis.com/gcm/send");
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -45,9 +36,9 @@
 
 	$server_output = curl_exec($ch);
 
-	// print_r($server_output);
 	curl_close ($ch);
 
-	echo $subscription_id;
+	header('Status: 200 OK');
+	echo 1;
 
 	

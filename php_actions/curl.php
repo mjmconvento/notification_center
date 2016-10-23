@@ -1,12 +1,5 @@
-
 <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "devcon_push_notification";
-
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	include 'connect.php';
 
     $stmt = $conn->prepare("SELECT subscription_id FROM subscriptions"); 
     $stmt->execute();
@@ -19,7 +12,6 @@
     foreach($result as $key => $value) {
     	array_push($result_array, $result[$key]['subscription_id']);
     }
-
 
 
     // Curl to send to GCM
