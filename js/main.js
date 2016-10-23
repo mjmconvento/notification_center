@@ -12,13 +12,14 @@ $(document).ready(function() {
         // place subscription object to 'sub' variable
         navigator.serviceWorker.ready.then(function(serviceWorkerRegistration) {
             serviceWorkerRegistration.pushManager.getSubscription().then(function(subscription) {
+                reg = serviceWorkerRegistration;
                 sub = subscription;
 
                 mergedEndpoint = endpointWorkaround(sub);
                 endpointSections = mergedEndpoint.split('/');
                 subscriptionId = endpointSections[endpointSections.length - 1];
 
-
+                console.log(subscriptionId);
             });
         });
     } else if (navigator.serviceWorker == null) {
@@ -87,14 +88,12 @@ function endpointWorkaround(pushSubscription) {
 
 
 function subscribe() {
-    reg.pushManager.subscribe({userVisibleOnly: true}).
-    then(function(subscription) { 
+    reg.pushManager.subscribe({userVisibleOnly: true}).then(function(subscription) { 
         sub = subscription;
 
         mergedEndpoint = endpointWorkaround(sub);
         endpointSections = mergedEndpoint.split('/');
         subscriptionId = endpointSections[endpointSections.length - 1];
-
 
         $.ajax({
             type: 'POST',
@@ -105,7 +104,6 @@ function subscribe() {
             url: 'php_actions/registration_actions.php',
             success: function() {
                 console.log('success');
-
                 $('#unsubscribe-push-notification').removeClass('hidden');
                 $('.subscribe-push-notification').addClass('hidden');
             },
@@ -114,11 +112,15 @@ function subscribe() {
             }
         });
 
+    }).catch(function(err) {
+        // registration failed :(
+        console.log('ServiceWorker registration failed: ', err);
     });
 }
 
 function unsubscribe() {
-    sub.unsubscribe().then(function(event) {
+
+    reg.unregister().then(function(event) {
         $.ajax({
             type: 'POST',
             data: {

@@ -12,7 +12,7 @@
             <h1> Subscribe/Unsubscribe here: 
                 <button type="button" class="btn btn-primary" id="unsubscribe-push-notification" 
                 data-dismiss="modal">Unsubscribe</button>
-               <button type="button" class="btn btn-primary subscribe-push-notification hidden" 
+                <button type="button" class="btn btn-primary subscribe-push-notification hidden" 
                 id="subscribe-push-notification" data-dismiss="modal">Subscribe</button>
             </h1>
         </div>

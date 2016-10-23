@@ -20,6 +20,7 @@ self.addEventListener('push', function(event) {
                 endpointSections = mergedEndpoint.split('/'),
                 subscriptionId = endpointSections[endpointSections.length - 1];
 
+               console.log(subscriptionId);
 		    fetch('php_actions/notification_get_message.php?subscription_id=' + subscriptionId).then(function(response) {
 		        // Examine the text in the response  
 		        return response.json().then(function(data) { 
