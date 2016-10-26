@@ -20,6 +20,7 @@
             "type": "image/png"
         }
     ],
+    "start_url": "/index.php",
     "display": "fullscreen",
     "orientation": "portrait"
 }
